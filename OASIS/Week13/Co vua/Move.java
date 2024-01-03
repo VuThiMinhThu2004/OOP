@@ -1,0 +1,103 @@
+public class Move {
+    private int startX;
+    private int endX;
+    private int startY;
+    private int endY;
+    private Piece movedPiece;
+    private Piece killedPiece;
+
+    /**
+     * Constructs a Move object for a non-capturing move.
+     */
+    public Move(int startX, int endX, int startY, int endY, Piece movedPiece) {
+        this.startX = startX;
+        this.endX = endX;
+        this.startY = startY;
+        this.endY = endY;
+        this.movedPiece = movedPiece;
+    }
+
+    /**
+     * Constructs a Move object for a capturing move.
+     */
+    public Move(int startX, int endX, int startY, int endY, Piece movedPiece, Piece killedPiece) {
+        this.startX = startX;
+        this.endX = endX;
+        this.startY = startY;
+        this.endY = endY;
+        this.movedPiece = movedPiece;
+        this.killedPiece = killedPiece;
+    }
+
+    /**
+     * Generates the Algebraic notation for the given coordinates.
+     */
+    private String getAlgebraicNotation(int x, int y) {
+        char file = (char) (x + 96);
+        return file + Integer.toString(y);
+    }
+
+    /**
+     * Returns a string representation of the move.
+     * Format: color-symbol + Algebraic notation coordinates.
+     * Example: "white-Ra7".
+     */
+    public String toString() {
+        StringBuilder moveString = new StringBuilder();
+
+        moveString.append(movedPiece.getColor());
+        moveString.append("-");
+        moveString.append(movedPiece.getSymbol());
+        moveString.append(getAlgebraicNotation(endX, endY));
+
+        return moveString.toString();
+    }
+
+    public int getStartX() {
+        return startX;
+    }
+
+    public int getEndX() {
+        return endX;
+    }
+
+    public int getStartY() {
+        return startY;
+    }
+
+    public int getEndY() {
+        return endY;
+    }
+
+    public Piece getMovedPiece() {
+        return movedPiece;
+    }
+
+    public Piece getKilledPiece() {
+        return killedPiece;
+    }
+
+    public void setStartX(int startX) {
+        this.startX = startX;
+    }
+
+    public void setEndX(int endX) {
+        this.endX = endX;
+    }
+
+    public void setStartY(int startY) {
+        this.startY = startY;
+    }
+
+    public void setEndY(int endY) {
+        this.endY = endY;
+    }
+
+    public void setMovedPiece(Piece movedPiece) {
+        this.movedPiece = movedPiece;
+    }
+
+    public void setKilledPiece(Piece killedPiece) {
+        this.killedPiece = killedPiece;
+    }
+}

@@ -1,0 +1,3 @@
+interface Sizeable {
+    int getSize();
+}  
